@@ -1,0 +1,109 @@
+<html lang="en"></html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Personal Website
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Inter', sans-serif;
+        }
+        .typing {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: .15em solid yellow;
+            animation: blink .75s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: yellow; }
+        }
+  </style>
+ </head>
+ <body class="bg-black text-white">
+  <header class="flex justify-between items-center p-6">
+   <div class="text-yellow-500 text-2xl font-bold">
+    Atay
+   </div>
+   <nav class="space-x-8 flex-1 flex justify-center">
+    <a class="text-gray-500 hover:text-yellow-500" href="index.html">
+        Back
+    </a>
+    <a class="text-white hover:text-yellow-500" href="2.html">
+     Home
+    </a>
+    <a class="text-gray-500 hover:text-yellow-500" href="about 2.html">
+     About
+    </a>
+    <a class="text-gray-500 hover:text-yellow-500" href="galery 2.html">
+     Gallery
+    </a>
+    <a class="text-gray-500 hover:text-yellow-500" href="contact 2.html">
+     Contact
+    </a>
+   </nav>
+  </header>
+  <main class="flex flex-col items-center justify-center min-h-screen text-center lg:flex-row lg:text-left lg:space-x-8">
+   <div class="mb-8 lg:mb-0">
+    <p class="text-yellow-500 text-lg">
+     Hello World, I'm
+    </p>
+    <h1 class="text-5xl font-bold">
+     Ezzar Badra Avatar Priana
+    </h1>
+    <p class="text-2xl mt-2">
+     <span class="typing" id="typing">
+     </span>
+    </p>
+    <p class="mt-4">
+     Welcome to My personal website.
+     <span class="wave">
+      👋
+     </span>
+    </p>
+   </div>
+   <div class="relative mt-8 lg:mt-0">
+    <img alt="Anime character with glasses and a blue scarf" class="rounded-full border-4 border-yellow-500" height="200" src="./images/ezzar 5.png" width="200"/>
+    <div class="absolute inset-0 rounded-full border-4 border-yellow-500 animate-pulse">
+    </div>
+   </div>
+  </main>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+            const typingElement = document.getElementById('typing');
+            const texts = ["Student"];
+            let textIndex = 0;
+            let charIndex = 0;
+            let direction = 1;
+
+            function type() {
+                if (charIndex < texts[textIndex].length && direction === 1) {
+                    typingElement.textContent += texts[textIndex].charAt(charIndex);
+                    charIndex++;
+                } else if (charIndex > 0 && direction === -1) {
+                    typingElement.textContent = typingElement.textContent.slice(0, -1);
+                    charIndex--;
+                }
+
+                if (charIndex === texts[textIndex].length) {
+                    direction = -1;
+                    setTimeout(type, 2000); // Pause before deleting
+                } else if (charIndex === 0) {
+                    direction = 1;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(type, 500); // Pause before typing next text
+                } else {
+                    setTimeout(type, 100);
+                }
+            }
+
+            type();
+        });
+  </script>
+ </body>
+</html>
